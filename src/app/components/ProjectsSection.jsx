@@ -11,7 +11,7 @@ const projectsData = [
     description: "",
     image: "/images/projects/portfolio.jpeg",
     tag: ["All", "Web"],
-    gitUrl: "https://github.com/Alex-Ojukwu/nextjs-portfolio.git",
+    gitUrl: "https://github.com/Alex-Ojukwu/portfolio.git",
     previewUrl: "/",
   },
   {
@@ -63,7 +63,7 @@ const projectsData = [
    {
     id: 7,
     title: "TalentLens AI",
-    description: "AI Interview Assistant with Emotion Detection and an Avatar with Live video Feed",
+    description: "AI Interview Assistant with Emotion Detection and an Avat ar with Live video Feed",
     image: "/images/projects/AI_interview_Assistant.jpeg",
     tag: ["All", "AI"],
     gitUrl: "",
