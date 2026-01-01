@@ -1,55 +1,40 @@
-# Modern Next.js Portfolio
+# My Professional Portfolio
 
-This is my professional portfolio website built with **Next.js** and **Tailwind CSS**. It is designed with a sleek, responsive UI to showcase my technical skills, software projects, and professional background.
-
----
-
-##  Features
-
-* **Responsive Design:** Optimized for all screen sizes (mobile, tablet, and desktop).
-* **Project Gallery:** Interactive section showcasing my latest web applications.
-* **Contact Integration:** Functional email system powered by the Resend API.
-* **Performance:** Built with Next.js for fast load times and SEO optimization.
+**Name:** Alex-Ojukwu Nduka  
+**Matric No:** 22120613086
 
 ---
 
-##  Tech Stack
+A modern, responsive portfolio website built with **Next.js** and **Tailwind CSS**. This project showcases my software engineering skills, technical projects, and professional background.
+
+## 🚀 Live Demo
+**[Click here to view my live portfolio](https://portfolio-five-rust-3idl0jhysq.vercel.app/)** ---
+
+## 🛠️ Tech Stack
+
+This project was built using the following technologies:
 
 * **Framework:** [Next.js](https://nextjs.org/) (React)
 * **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **Email API:** [Resend](https://resend.com/)
+* **Animations:** [Framer Motion](https://www.framer.com/motion/)
 * **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
-* **Components:** Framer Motion for smooth animations.
+* **Email API:** [Resend](https://resend.com/) for contact form integration
 
 ---
 
-##  Installation & Setup
+## ✨ Features
 
-If you'd like to run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/Alex-Ojukwu/portfolio.git](https://github.com/Alex-Ojukwu/portfolio.git)
-    ```
-
-2.  **Navigate to the folder:**
-    ```bash
-    cd portfolio
-    ```
-
-3.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-4.  **Start the development server:**
-    ```bash
-    npm run dev
-    ```
-    View the site at: `http://localhost:3000`
+* **Responsive Design:** Optimized for mobile, tablet, and desktop screens.
+* **Project Showcase:** Interactive gallery detailing my latest web applications.
+* **Contact Form:** Functional email form for professional inquiries.
+* **Performance:** High-speed loading and SEO optimization.
 
 ---
 
-##  License
+## 💻 Installation & Setup
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use and modify the code for your own projects.
+To run this project locally, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Alex-Ojukwu/portfolio.git](https://github.com/Alex-Ojukwu/portfolio.git)
