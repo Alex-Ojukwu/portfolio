@@ -7,10 +7,10 @@
 
 A modern, responsive portfolio website built with **Next.js** and **Tailwind CSS**. This project showcases my software engineering skills, technical projects, and professional background.
 
-## 🚀 Live Demo
+##  Live Demo
 **[Click here to view my live portfolio](https://portfolio-five-rust-3idl0jhysq.vercel.app/)** ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 This project was built using the following technologies:
 
@@ -22,7 +22,7 @@ This project was built using the following technologies:
 
 ---
 
-## ✨ Features
+##  Features
 
 * **Responsive Design:** Optimized for mobile, tablet, and desktop screens.
 * **Project Showcase:** Interactive gallery detailing my latest web applications.
@@ -31,7 +31,7 @@ This project was built using the following technologies:
 
 ---
 
-## 💻 Installation & Setup
+##  Installation & Setup
 
 To run this project locally, follow these steps:
 
