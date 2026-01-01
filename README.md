@@ -1,30 +1,40 @@
-# Portfolio Website
+# My Professional Portfolio
 
-This is a portfolio website built with Next.js and Tailwind CSS. It showcases your skills, projects, and achievements in an elegant and responsive design.
+**Name:** Alex-Ojukwu Nduka  
+**Matric No:** 22120613086
 
-## Installation
+---
 
-1. Clone the repository: `git clone https://github.com/judygab/nextjs-portfolio.git`
-2. Navigate to the project directory: `cd portfolio-website`
-3. Install the dependencies: `npm install`
+A modern, responsive portfolio website built with **Next.js** and **Tailwind CSS**. This project showcases my software engineering skills, technical projects, and professional background.
 
-## Usage
+##  Live Demo
+**[Click here to view my live portfolio](https://portfolio-five-rust-3idl0jhysq.vercel.app/)** ---
 
-1. Start the development server: `npm run dev`
-2. Open your browser and visit `http://localhost:3000` to view the website.
+##  Tech Stack
 
-## Dependencies
+This project was built using the following technologies:
 
-The following dependencies are required for this project:
+* **Framework:** [Next.js](https://nextjs.org/) (React)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Animations:** [Framer Motion](https://www.framer.com/motion/)
+* **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+* **Email API:** [Resend](https://resend.com/) for contact form integration
 
-- Next.js: A React framework for server-side rendering and static site generation.
-- Tailwind CSS: A highly customizable CSS framework.
-- React: A JavaScript library for building user interfaces.
-- React Icons: A collection of popular icons for React projects.
-- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
-- Resend: Resend is the email API for developers.
+---
 
-## License
+##  Features
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the code as per the terms of the license.
+* **Responsive Design:** Optimized for mobile, tablet, and desktop screens.
+* **Project Showcase:** Interactive gallery detailing my latest web applications.
+* **Contact Form:** Functional email form for professional inquiries.
+* **Performance:** High-speed loading and SEO optimization.
 
+---
+
+##  Installation & Setup
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Alex-Ojukwu/portfolio.git](https://github.com/Alex-Ojukwu/portfolio.git)
