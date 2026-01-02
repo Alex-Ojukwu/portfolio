@@ -66,7 +66,7 @@ const projectsData = [
     description: "AI Interview Assistant with Emotion Detection and an Avatar with Live video Feed",
     image: "/images/projects/AI_interview_Assistant.jpeg",
     tag: ["All", "AI"],
-    gitUrl: "",
+    gitUrl: "https://github.com/Alex-Ojukwu/AI-INTERVIEWER.git",
     previewUrl: "/",
   },
 ];
