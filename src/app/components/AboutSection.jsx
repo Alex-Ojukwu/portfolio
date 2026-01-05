@@ -63,7 +63,7 @@ const AboutSection = () => {
             interactive and responsive web applications. I have experience
             working with JavaScript, React, NextJs, Node.js, Express, PostgreSQL,
              HTML, SCSS, and Git. I am a quick learner and I am always
-            looking to expand my knowledge and skill set. I am also a team player and
+            looking to expand my knowledge and skill set especially in AI/ML. I am also a team player and
             I am excited to work with others to create amazing applications.
           </p>
           <div className="flex flex-row justify-start mt-8">
