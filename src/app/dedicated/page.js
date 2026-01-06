@@ -51,10 +51,10 @@ export default function DedicatedPage() {
           </h2>
           <div className="bg-[#1a1a1a] rounded-xl p-6 md:p-8 border border-[#33353F] space-y-4">
             <p className="text-gray-300 leading-relaxed">
-              The AI Virtual Interview Assistant is an intelligent, end-to-end interview simulation platform that provides candidates with a realistic, AI-powered practice environment. The system leverages OpenAI's GPT-4 to conduct dynamic, adaptive interviews while simultaneously analyzing the candidate's emotional state and engagement through real-time facial expression detection using DeepFace and MediaPipe.
+              The AI Virtual Interview Assistant is an intelligent, end-to-end interview simulation platform that provides candidates with a realistic, AI-powered practice environment. The system leverages OpenAI&apos;s GPT-4 to conduct dynamic, adaptive interviews while simultaneously analyzing the candidate&apos;s emotional state and engagement through real-time facial expression detection using DeepFace and MediaPipe.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              The platform features a talking AI avatar (powered by D-ID) that asks questions with natural lip-sync and movements, creating an immersive multimodal experience. Candidates respond verbally, with their answers automatically transcribed using OpenAI's Whisper API. The system generates personalized interview questions based on job role and difficulty level, evaluates answers in real-time, and produces comprehensive performance reports including emotion analytics throughout the interview session.
+              The platform features a talking AI avatar (powered by D-ID) that asks questions with natural lip-sync and movements, creating an immersive multimodal experience. Candidates respond verbally, with their answers automatically transcribed using OpenAI&apos;s Whisper API. The system generates personalized interview questions based on job role and difficulty level, evaluates answers in real-time, and produces comprehensive performance reports including emotion analytics throughout the interview session.
             </p>
             <p className="text-gray-300 leading-relaxed">
               This hybrid local-cloud architecture combines the responsiveness of local emotion detection with the sophistication of cloud-based AI services to deliver a seamless, professional interview practice experience.
@@ -83,21 +83,21 @@ export default function DedicatedPage() {
                 <span className="text-primary-500 font-bold flex-shrink-0">2.</span>
                 <div>
                   <span className="font-semibold text-white">Lack of Real-time Feedback:</span>
-                  <span className="text-gray-300"> Most practice methods don't provide immediate insights into body language, emotional state, or engagement levels during responses.</span>
+                  <span className="text-gray-300"> Most practice methods don&apos;t provide immediate insights into body language, emotional state, or engagement levels during responses.</span>
                 </div>
               </div>
               <div className="flex gap-3">
                 <span className="text-primary-500 font-bold flex-shrink-0">3.</span>
                 <div>
                   <span className="font-semibold text-white">Static Question Sets:</span>
-                  <span className="text-gray-300"> Pre-recorded or scripted interview questions don't adapt to candidate responses, failing to simulate real interview dynamics.</span>
+                  <span className="text-gray-300"> Pre-recorded or scripted interview questions don&apos;t adapt to candidate responses, failing to simulate real interview dynamics.</span>
                 </div>
               </div>
               <div className="flex gap-3">
                 <span className="text-primary-500 font-bold flex-shrink-0">4.</span>
                 <div>
                   <span className="font-semibold text-white">No Emotional Intelligence Training:</span>
-                  <span className="text-gray-300"> Candidates can't see how their facial expressions and emotional state might be perceived by interviewers.</span>
+                  <span className="text-gray-300"> Candidates can&apos;t see how their facial expressions and emotional state might be perceived by interviewers.</span>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -151,7 +151,7 @@ export default function DedicatedPage() {
               <ul className="text-gray-300 space-y-2 text-sm">
                 <li>• D-ID powered realistic avatar with lip-sync</li>
                 <li>• Natural facial movements and expressions</li>
-                <li>• Professional presenter (default: "Alice")</li>
+                <li>• Professional presenter (default: &quot;Alice&quot;)</li>
                 <li>• Persists on screen after speaking for continuous engagement</li>
               </ul>
             </div>
@@ -473,7 +473,7 @@ export default function DedicatedPage() {
                 Cloud Service Integration
               </h3>
               <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Understanding D-ID's asynchronous processing workflow</li>
+                <li>Understanding D-ID&apos;s asynchronous processing workflow</li>
                 <li>Managing API authentication (Basic auth format quirks)</li>
                 <li>Handling webhook alternatives (polling vs streaming)</li>
                 <li>Cost optimization (when to use cloud vs local processing)</li>
