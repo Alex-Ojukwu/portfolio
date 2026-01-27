@@ -16,7 +16,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Potography Portfolio Website",
+    title: "Photography Portfolio Website",
     description: "",
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
@@ -105,11 +105,11 @@ const ProjectsSection = () => {
           name="Web"
           isSelected={tag === "Web"}
         />
-        <ProjectTag
+        {/* <ProjectTag
           onClick={handleTagChange}
           name="OS"
           isSelected={tag === "OS"}
-        />
+        /> */}
         <ProjectTag
           onClick={handleTagChange}
           name="JAVA"
