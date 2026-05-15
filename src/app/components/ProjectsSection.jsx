@@ -8,7 +8,7 @@ const projectsData = [
   {
     id: 1,
     title: "React Portfolio Website",
-    description: "",
+    description: "Personal portfolio built with React and modern UI patterns.",
     image: "/images/projects/portfolio.jpeg",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/Alex-Ojukwu/portfolio.git",
@@ -17,17 +17,16 @@ const projectsData = [
   {
     id: 2,
     title: "Photography Portfolio Website",
-    description: "",
+    description: "A clean, visual-first portfolio for photography work.",
     image: "/images/projects/2.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
   },
-
   {
     id: 4,
     title: "Doctor's Booking Application",
-    description: "",
+    description: "Full-stack appointment scheduling system for clinics.",
     image: "/images/projects/Doctor_Appointment.jpeg",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/Alex-Ojukwu/Doctor-Appointment",
@@ -36,7 +35,7 @@ const projectsData = [
   {
     id: 5,
     title: "Flower",
-    description: "Flower Graphics Design using Blender",
+    description: "3D flower graphics design created using Blender.",
     image: "/images/projects/flower.png",
     tag: ["All", "Blender"],
     gitUrl: "/",
@@ -45,25 +44,25 @@ const projectsData = [
   {
     id: 6,
     title: "Full-stack Roadmap",
-    description: "",
+    description: "A visual roadmap guide for full-stack development.",
     image: "/images/projects/6.png",
     tag: ["All", "Web"],
     gitUrl: "/",
     previewUrl: "/",
   },
-    {
+  {
     id: 7,
     title: "Biometrics Registration",
-    description: "Cafeteria System that uses fingerprint biometric authentication",
+    description: "Cafeteria system using fingerprint biometric authentication.",
     image: "/images/projects/staff_registration.jpeg",
     tag: ["All", "JAVA"],
     gitUrl: "https://github.com/Alex-Ojukwu/JAVA-NETBEANS.git",
     previewUrl: "/",
   },
-   {
-    id: 7,
+  {
+    id: 8,
     title: "TalentLens AI",
-    description: "AI Interview Assistant with Emotion Detection and an Avatar with Live video Feed",
+    description: "AI interview assistant with emotion detection and avatar live video feed.",
     image: "/images/projects/AI_interview_Assistant.jpeg",
     tag: ["All", "AI"],
     gitUrl: "https://github.com/Alex-Ojukwu/AI-INTERVIEWER.git",
@@ -76,67 +75,48 @@ const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  const handleTagChange = (newTag) => {
-    setTag(newTag);
-  };
-
   const filteredProjects = projectsData.filter((project) =>
     project.tag.includes(tag)
   );
 
   const cardVariants = {
-    initial: { y: 50, opacity: 0 },
+    initial: { y: 40, opacity: 0 },
     animate: { y: 0, opacity: 1 },
   };
 
   return (
-    <section id="projects">
-      <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
-        My Projects
-      </h2>
-      <div className="text-white flex flex-row justify-center items-center flex-wrap gap-2 sm:gap-3 md:gap-4 py-4 sm:py-6">
-        <ProjectTag
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Web"
-          isSelected={tag === "Web"}
-        />
-        {/* <ProjectTag
-          onClick={handleTagChange}
-          name="OS"
-          isSelected={tag === "OS"}
-        /> */}
-        <ProjectTag
-          onClick={handleTagChange}
-          name="JAVA"
-          isSelected={tag === "JAVA"}
-        />
-         <ProjectTag
-          onClick={handleTagChange}
-          name="AI"
-          isSelected={tag === "AI"}
-        />
-         <ProjectTag
-          onClick={handleTagChange}
-          name="Blender"
-          isSelected={tag === "Blender"}
-        />
+    <section id="projects" className="py-16 sm:py-20">
+      <div className="text-center mb-10">
+        <p className="text-indigo-600 font-semibold text-sm uppercase tracking-widest mb-2">
+          What I&apos;ve built
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+          My Projects
+        </h2>
       </div>
-      <ul ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
+      <div className="flex flex-row justify-center items-center flex-wrap gap-2 mb-8">
+        {["All", "Web", "JAVA", "AI", "Blender"].map((t) => (
+          <ProjectTag
+            key={t}
+            onClick={setTag}
+            name={t}
+            isSelected={tag === t}
+          />
+        ))}
+      </div>
+      <ul
+        ref={ref}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      >
         {filteredProjects.map((project, index) => (
           <motion.li
-            key={index}
+            key={project.id + "-" + index}
             variants={cardVariants}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            transition={{ duration: 0.3, delay: index * 0.4 }}
+            transition={{ duration: 0.35, delay: index * 0.1 }}
           >
             <ProjectCard
-              key={project.id}
               title={project.title}
               description={project.description}
               imgUrl={project.image}

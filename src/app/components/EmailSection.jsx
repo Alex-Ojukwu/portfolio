@@ -16,115 +16,111 @@ const EmailSection = () => {
       message: e.target.message.value,
     };
     const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
-
-    // Form the request for sending data to the server.
     const options = {
-      // The method is POST because we are sending data.
       method: "POST",
-      // Tell the server we're sending JSON.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // Body of the request is the JSON data we created above.
+      headers: { "Content-Type": "application/json" },
       body: JSONdata,
     };
-
-    const response = await fetch(endpoint, options);
+    const response = await fetch("/api/send", options);
     const resData = await response.json();
-
     if (response.status === 200) {
-      console.log("Message sent.");
       setEmailSubmitted(true);
     }
   };
 
   return (
-    <section
-      id="contact"
-      className="grid grid-cols-1 md:grid-cols-2 my-6 sm:my-8 md:my-12 py-12 sm:py-16 md:py-24 gap-4 sm:gap-6 md:gap-8 relative"
-    >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
-      <div className="z-10">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
-        </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/Alex-Ojukwu">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/alex-ojukwu-a17852365/">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
-          </Link>
+    <section id="contact" className="py-16 sm:py-20">
+      <div className="bg-gradient-to-br from-indigo-50 to-violet-50 rounded-3xl p-8 sm:p-12 border border-indigo-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div>
+            <p className="text-indigo-600 font-semibold text-sm uppercase tracking-widest mb-2">
+              Get in touch
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+              Let&apos;s Connect
+            </h2>
+            <p className="text-slate-600 mb-6 max-w-sm leading-relaxed">
+              I&apos;m currently open to new opportunities. Whether you have a
+              question or just want to say hi, I&apos;ll always get back to you!
+            </p>
+            <div className="flex flex-row gap-3">
+              <Link
+                href="https://github.com/Alex-Ojukwu"
+                className="p-2.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-sm transition-all"
+              >
+                <Image src={GithubIcon} alt="Github" width={24} height={24} />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/alex-ojukwu-a17852365/"
+                className="p-2.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-sm transition-all"
+              >
+                <Image src={LinkedinIcon} alt="LinkedIn" width={24} height={24} />
+              </Link>
+            </div>
+          </div>
+          <div>
+            {emailSubmitted ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p className="text-slate-800 font-semibold text-lg">Message sent!</p>
+                  <p className="text-slate-500 text-sm mt-1">I&apos;ll get back to you soon.</p>
+                </div>
+              </div>
+            ) : (
+              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="email" className="text-slate-700 block mb-1.5 text-sm font-medium">
+                    Your email
+                  </label>
+                  <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    required
+                    className="bg-white border border-slate-200 placeholder-slate-400 text-slate-800 text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="subject" className="text-slate-700 block mb-1.5 text-sm font-medium">
+                    Subject
+                  </label>
+                  <input
+                    name="subject"
+                    type="text"
+                    id="subject"
+                    required
+                    className="bg-white border border-slate-200 placeholder-slate-400 text-slate-800 text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition"
+                    placeholder="Just saying hi"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="text-slate-700 block mb-1.5 text-sm font-medium">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows={4}
+                    className="bg-white border border-slate-200 placeholder-slate-400 text-slate-800 text-sm rounded-xl block w-full p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition resize-none"
+                    placeholder="Let&apos;s talk about..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 transition-all duration-200"
+                >
+                  Send Message
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-      </div>
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm sm:text-base rounded-lg block w-full p-3 sm:p-2.5"
-                placeholder="jacob@google.com"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Subject
-              </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm sm:text-base rounded-lg block w-full p-3 sm:p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm sm:text-base rounded-lg block w-full p-3 sm:p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-3 sm:py-2.5 px-5 rounded-lg w-full text-base sm:text-sm"
-            >
-              Send Message
-            </button>
-          </form>
-        )}
       </div>
     </section>
   );

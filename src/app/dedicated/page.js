@@ -4,36 +4,273 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
+const features = [
+  {
+    title: "Dynamic Interview Question Generation",
+    items: [
+      "GPT-4 generates contextually relevant questions based on job role",
+      "Adaptive questioning that builds on previous answers",
+      "Configurable difficulty levels (easy, medium, hard)",
+      "3–7 questions per session based on duration",
+    ],
+  },
+  {
+    title: "Talking AI Avatar",
+    items: [
+      "D-ID powered realistic avatar with lip-sync",
+      "Natural facial movements and expressions",
+      'Professional presenter (default: "Alice")',
+      "Persists on screen after speaking for continuous engagement",
+    ],
+  },
+  {
+    title: "Real-time Emotion Detection",
+    items: [
+      "DeepFace + MediaPipe facial expression analysis",
+      "7 emotion categories: happy, sad, angry, surprised, fearful, disgusted, neutral",
+      "Analysis every 2 seconds during interview",
+      "Confidence scores and emotion distribution tracking",
+    ],
+  },
+  {
+    title: "Speech-to-Text Transcription",
+    items: [
+      "OpenAI Whisper API for accurate audio transcription",
+      "Supports multiple audio formats (MP3, WAV, WebM, OGG)",
+      "Automatic answer submission after recording",
+    ],
+  },
+  {
+    title: "Live Webcam Feed",
+    items: [
+      "Real-time video capture and display",
+      "Face detection indicator",
+      "Privacy-focused local processing",
+    ],
+  },
+  {
+    title: "Intelligent Answer Evaluation",
+    items: [
+      "GPT-4 evaluates response quality",
+      "Contextual feedback based on job role",
+      "Scoring and improvement suggestions",
+    ],
+  },
+  {
+    title: "Comprehensive Interview Reports",
+    items: [
+      "Q&A pairs with evaluations",
+      "Emotion timeline and distribution",
+      "Engagement scores",
+      "Overall performance summary",
+      "Export-ready analytics",
+    ],
+  },
+  {
+    title: "Session Management",
+    items: [
+      "Unique session IDs",
+      "Progress tracking (question X of Y)",
+      "Time limits and question caps",
+      "Graceful session termination",
+    ],
+  },
+];
+
+const techStacks = [
+  {
+    label: "Frontend",
+    color: "indigo",
+    items: [
+      { name: "Next.js 14", desc: "React framework for SSR" },
+      { name: "React 18", desc: "UI component library" },
+      { name: "TypeScript", desc: "Type-safe JavaScript" },
+      { name: "CSS3", desc: "Custom styling" },
+      { name: "WebRTC APIs", desc: "Media capture" },
+      { name: "Canvas API", desc: "Image processing" },
+    ],
+  },
+  {
+    label: "Backend",
+    color: "violet",
+    items: [
+      { name: "FastAPI", desc: "Modern Python framework" },
+      { name: "Uvicorn", desc: "ASGI server" },
+      { name: "Python 3.10+", desc: "Core language" },
+      { name: "Pydantic", desc: "Data validation" },
+    ],
+  },
+  {
+    label: "AI / ML",
+    color: "purple",
+    items: [
+      { name: "OpenAI GPT-4", desc: "Question generation & evaluation" },
+      { name: "Whisper API", desc: "Speech-to-text" },
+      { name: "DeepFace", desc: "Facial expression analysis" },
+      { name: "MediaPipe", desc: "Face landmark detection" },
+      { name: "TensorFlow 2.20", desc: "Deep learning framework" },
+      { name: "OpenCV", desc: "Computer vision" },
+    ],
+  },
+  {
+    label: "Cloud Services",
+    color: "sky",
+    items: [
+      { name: "D-ID API", desc: "Talking avatar generation" },
+      { name: "OpenAI API", desc: "GPT-4 and Whisper endpoints" },
+    ],
+  },
+];
+
+const learnings = [
+  {
+    title: "Full-Stack Integration",
+    items: [
+      "Building seamless communication between Next.js frontend and FastAPI backend",
+      "Implementing WebSocket connections for real-time data streaming",
+      "Managing CORS policies for local development",
+      "Handling asynchronous operations across the stack",
+    ],
+  },
+  {
+    title: "AI/ML Model Integration",
+    items: [
+      "Working with multiple AI APIs (OpenAI, D-ID) in a single application",
+      "Understanding DeepFace model initialization and TensorFlow compatibility issues",
+      "Resolving dependency conflicts (tf-keras requirement for TensorFlow 2.20)",
+      "Optimizing ML model performance for real-time applications",
+      "Balancing local processing vs cloud APIs",
+    ],
+  },
+  {
+    title: "Real-time Media Processing",
+    items: [
+      "Capturing and processing webcam frames using Canvas API",
+      "Implementing efficient base64 encoding for image transmission",
+      "Managing audio recording with MediaRecorder API",
+      "Handling browser media permissions and error states",
+      "Optimizing frame analysis intervals for performance",
+    ],
+  },
+  {
+    title: "State Management",
+    items: [
+      "Managing complex React component state (idle, loading, speaking, completed)",
+      "Coordinating multiple asynchronous operations",
+      "Session lifecycle management with unique IDs",
+      "Progress tracking across multi-step interviews",
+    ],
+  },
+  {
+    title: "API Design & Backend Architecture",
+    items: [
+      "Designing RESTful endpoints with FastAPI",
+      "Implementing proper error handling and validation with Pydantic",
+      "Structuring code with routers, services, and schemas",
+      "Creating reusable service classes (FaceAnalyzer, InterviewFlow)",
+      "Managing API rate limits and timeouts",
+    ],
+  },
+  {
+    title: "Problem-Solving",
+    items: [
+      "Debugging TensorFlow/DeepFace compatibility issues",
+      "Implementing fallback mechanisms when services fail",
+      "Handling asynchronous D-ID avatar generation (polling for completion)",
+      "Managing file cleanup for temporary audio files",
+    ],
+  },
+  {
+    title: "User Experience Design",
+    items: [
+      "Creating smooth transitions between interview states",
+      "Providing visual feedback (loading indicators, streaming status)",
+      "Implementing retry logic for failed operations",
+      "Designing intuitive error messages",
+    ],
+  },
+  {
+    title: "Development Best Practices",
+    items: [
+      "Environment variable management for API keys",
+      "Writing modular, maintainable code",
+      "Implementing proper logging for debugging",
+      "Using TypeScript for type safety",
+    ],
+  },
+  {
+    title: "Cloud Service Integration",
+    items: [
+      "Understanding D-ID's asynchronous processing workflow",
+      "Managing API authentication (Basic auth format quirks)",
+      "Handling webhook alternatives (polling vs streaming)",
+      "Cost optimization — when to use cloud vs local processing",
+    ],
+  },
+  {
+    title: "Performance Optimization",
+    items: [
+      "Lazy loading of heavy ML models",
+      "Implementing analysis intervals to reduce API calls",
+      "Optimizing image quality/size for transmission",
+      "Managing memory with proper cleanup on component unmount",
+    ],
+  },
+];
+
+const stackBadgeColors = {
+  indigo: "bg-indigo-50 border-indigo-100 text-indigo-700",
+  violet: "bg-violet-50 border-violet-100 text-violet-700",
+  purple: "bg-purple-50 border-purple-100 text-purple-700",
+  sky: "bg-sky-50 border-sky-100 text-sky-700",
+};
+
+const stackHeadingColors = {
+  indigo: "text-indigo-600",
+  violet: "text-violet-600",
+  purple: "text-purple-600",
+  sky: "text-sky-600",
+};
+
 export default function DedicatedPage() {
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#121212] border-b border-[#33353F]">
-        <div className="container mx-auto px-4 py-4">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 py-3 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-white hover:text-primary-500 transition-colors"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-indigo-600 font-medium text-sm transition-colors"
           >
-            <ArrowLeftIcon className="h-5 w-5" />
-            <span>Back to Portfolio</span>
+            <ArrowLeftIcon className="h-4 w-4" />
+            Back to Portfolio
           </Link>
+          <span className="text-lg font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+            Alex-Ojukwu.
+          </span>
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 pt-24 pb-16">
+      <main className="container mx-auto px-4 sm:px-6 md:px-8 pt-24 pb-20 max-w-5xl">
+
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-secondary-600 text-transparent bg-clip-text">
-            AI Virtual Interview Assistant
+        <div className="mb-10 text-center">
+          <span className="inline-block text-indigo-600 font-semibold text-sm uppercase tracking-widest mb-3">
+            Featured Project
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
+            AI Virtual{" "}
+            <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+              Interview Assistant
+            </span>
           </h1>
-          <p className="text-xl text-gray-400">
-            Intelligent Interview Simulation with Real-time Emotion Analysis
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+            Intelligent interview simulation with real-time emotion analysis, a talking AI avatar, and comprehensive performance reports.
           </p>
         </div>
 
         {/* Screenshot */}
-        <div className="mb-16 rounded-xl overflow-hidden border border-[#33353F] shadow-2xl">
+        <div className="mb-16 rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100">
           <Image
             src="/images/ai-interviewer-screenshot.png"
             alt="AI Virtual Interview Assistant Screenshot"
@@ -46,17 +283,15 @@ export default function DedicatedPage() {
 
         {/* Full Description */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-primary-400">
-            Full Description
-          </h2>
-          <div className="bg-[#1a1a1a] rounded-xl p-6 md:p-8 border border-[#33353F] space-y-4">
-            <p className="text-gray-300 leading-relaxed">
-              The AI Virtual Interview Assistant is an intelligent, end-to-end interview simulation platform that provides candidates with a realistic, AI-powered practice environment. The system leverages OpenAI&apos;s GPT-4 to conduct dynamic, adaptive interviews while simultaneously analyzing the candidate&apos;s emotional state and engagement through real-time facial expression detection using DeepFace and MediaPipe.
+          <SectionHeading label="Overview" title="Full Description" />
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm space-y-4">
+            <p className="text-slate-600 leading-relaxed">
+              The AI Virtual Interview Assistant is an intelligent, end-to-end interview simulation platform that provides candidates with a realistic, AI-powered practice environment. The system leverages OpenAI&apos;s GPT-4 to conduct dynamic, adaptive interviews while simultaneously analyzing the candidate&apos;s emotional state through real-time facial expression detection using DeepFace and MediaPipe.
             </p>
-            <p className="text-gray-300 leading-relaxed">
-              The platform features a talking AI avatar (powered by D-ID) that asks questions with natural lip-sync and movements, creating an immersive multimodal experience. Candidates respond verbally, with their answers automatically transcribed using OpenAI&apos;s Whisper API. The system generates personalized interview questions based on job role and difficulty level, evaluates answers in real-time, and produces comprehensive performance reports including emotion analytics throughout the interview session.
+            <p className="text-slate-600 leading-relaxed">
+              The platform features a talking AI avatar (powered by D-ID) that asks questions with natural lip-sync and movements, creating an immersive multimodal experience. Candidates respond verbally, with answers automatically transcribed using OpenAI&apos;s Whisper API. The system generates personalized interview questions based on job role and difficulty level, evaluates answers in real-time, and produces comprehensive performance reports including emotion analytics throughout the session.
             </p>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-slate-600 leading-relaxed">
               This hybrid local-cloud architecture combines the responsiveness of local emotion detection with the sophistication of cloud-based AI services to deliver a seamless, professional interview practice experience.
             </p>
           </div>
@@ -64,449 +299,150 @@ export default function DedicatedPage() {
 
         {/* Problem I Solved */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-primary-400">
-            Problem I Solved
-          </h2>
-          <div className="bg-[#1a1a1a] rounded-xl p-6 md:p-8 border border-[#33353F]">
-            <p className="text-gray-300 mb-6 leading-relaxed">
+          <SectionHeading label="Challenge" title="Problem I Solved" />
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 shadow-sm">
+            <p className="text-slate-600 mb-6 leading-relaxed">
               Traditional interview preparation faces several critical challenges:
             </p>
             <div className="space-y-4 mb-8">
-              <div className="flex gap-3">
-                <span className="text-primary-500 font-bold flex-shrink-0">1.</span>
-                <div>
-                  <span className="font-semibold text-white">Limited Practice Opportunities:</span>
-                  <span className="text-gray-300"> Candidates struggle to get realistic interview practice without access to human interviewers, leading to nervousness and poor performance in actual interviews.</span>
+              {[
+                { title: "Limited Practice Opportunities", body: "Candidates struggle to get realistic interview practice without access to human interviewers, leading to nervousness and poor performance in actual interviews." },
+                { title: "Lack of Real-time Feedback", body: "Most practice methods don't provide immediate insights into body language, emotional state, or engagement levels during responses." },
+                { title: "Static Question Sets", body: "Pre-recorded or scripted interview questions don't adapt to candidate responses, failing to simulate real interview dynamics." },
+                { title: "No Emotional Intelligence Training", body: "Candidates can't see how their facial expressions and emotional state might be perceived by interviewers." },
+                { title: "Accessibility Barriers", body: "Professional interview coaching is expensive and scheduling can be difficult." },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-br from-indigo-600 to-violet-600 text-white text-xs font-bold flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <span className="font-semibold text-slate-800">{item.title}: </span>
+                    <span className="text-slate-600 text-sm">{item.body}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary-500 font-bold flex-shrink-0">2.</span>
-                <div>
-                  <span className="font-semibold text-white">Lack of Real-time Feedback:</span>
-                  <span className="text-gray-300"> Most practice methods don&apos;t provide immediate insights into body language, emotional state, or engagement levels during responses.</span>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary-500 font-bold flex-shrink-0">3.</span>
-                <div>
-                  <span className="font-semibold text-white">Static Question Sets:</span>
-                  <span className="text-gray-300"> Pre-recorded or scripted interview questions don&apos;t adapt to candidate responses, failing to simulate real interview dynamics.</span>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary-500 font-bold flex-shrink-0">4.</span>
-                <div>
-                  <span className="font-semibold text-white">No Emotional Intelligence Training:</span>
-                  <span className="text-gray-300"> Candidates can&apos;t see how their facial expressions and emotional state might be perceived by interviewers.</span>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <span className="text-primary-500 font-bold flex-shrink-0">5.</span>
-                <div>
-                  <span className="font-semibold text-white">Accessibility Barriers:</span>
-                  <span className="text-gray-300"> Professional interview coaching is expensive and scheduling can be difficult.</span>
-                </div>
-              </div>
+              ))}
             </div>
-            <div className="border-t border-[#33353F] pt-6">
-              <h3 className="font-semibold text-xl text-white mb-4">My Solution:</h3>
-              <p className="text-gray-300 leading-relaxed">
-                The AI Virtual Interview Assistant solves these problems by providing:
-              </p>
-              <ul className="list-disc list-inside text-gray-300 mt-4 space-y-2 ml-4">
-                <li>24/7 accessible AI-powered interview practice</li>
-                <li>Real-time emotion detection to help candidates understand their non-verbal communication</li>
-                <li>Adaptive questioning that responds intelligently to candidate answers</li>
-                <li>Comprehensive performance analytics and personalized feedback</li>
-                <li>Cost-effective alternative to professional coaching</li>
+            <div className="border-t border-slate-200 pt-6">
+              <h3 className="font-bold text-slate-900 text-lg mb-3">My Solution</h3>
+              <ul className="space-y-2">
+                {[
+                  "24/7 accessible AI-powered interview practice",
+                  "Real-time emotion detection to help candidates understand their non-verbal communication",
+                  "Adaptive questioning that responds intelligently to candidate answers",
+                  "Comprehensive performance analytics and personalized feedback",
+                  "Cost-effective alternative to professional coaching",
+                ].map((s) => (
+                  <li key={s} className="flex items-start gap-2 text-slate-600 text-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5" />
+                    {s}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
         </section>
 
-        {/* Features */}
+        {/* Key Features */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-primary-400">
-            Key Features
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Feature 1 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                1. Dynamic Interview Question Generation
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• GPT-4 generates contextually relevant questions based on job role</li>
-                <li>• Adaptive questioning that builds on previous answers</li>
-                <li>• Configurable difficulty levels (easy, medium, hard)</li>
-                <li>• 3-7 questions per session based on duration</li>
-              </ul>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                2. Talking AI Avatar
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• D-ID powered realistic avatar with lip-sync</li>
-                <li>• Natural facial movements and expressions</li>
-                <li>• Professional presenter (default: &quot;Alice&quot;)</li>
-                <li>• Persists on screen after speaking for continuous engagement</li>
-              </ul>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                3. Real-time Emotion Detection
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• DeepFace + MediaPipe facial expression analysis</li>
-                <li>• 7 emotion categories: happy, sad, angry, surprised, fearful, disgusted, neutral</li>
-                <li>• Analysis every 2 seconds during interview</li>
-                <li>• Confidence scores and emotion distribution tracking</li>
-              </ul>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                4. Speech-to-Text Transcription
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• OpenAI Whisper API for accurate audio transcription</li>
-                <li>• Supports multiple audio formats (MP3, WAV, WebM, OGG)</li>
-                <li>• Automatic answer submission after recording</li>
-              </ul>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                5. Live Webcam Feed
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• Real-time video capture and display</li>
-                <li>• Face detection indicator</li>
-                <li>• Privacy-focused local processing</li>
-              </ul>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                6. Intelligent Answer Evaluation
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• GPT-4 evaluates response quality</li>
-                <li>• Contextual feedback based on job role</li>
-                <li>• Scoring and improvement suggestions</li>
-              </ul>
-            </div>
-
-            {/* Feature 7 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                7. Comprehensive Interview Reports
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• Q&A pairs with evaluations</li>
-                <li>• Emotion timeline and distribution</li>
-                <li>• Engagement scores</li>
-                <li>• Overall performance summary</li>
-                <li>• Export-ready analytics</li>
-              </ul>
-            </div>
-
-            {/* Feature 8 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F] hover:border-primary-500 transition-colors">
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                8. Session Management
-              </h3>
-              <ul className="text-gray-300 space-y-2 text-sm">
-                <li>• Unique session IDs</li>
-                <li>• Progress tracking (question X of Y)</li>
-                <li>• Time limits and question caps</li>
-                <li>• Graceful session termination</li>
-              </ul>
-            </div>
+          <SectionHeading label="Capabilities" title="Key Features" />
+          <div className="grid md:grid-cols-2 gap-5">
+            {features.map((feature, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:border-indigo-200 hover:shadow-md transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
+                    {i + 1}
+                  </span>
+                  <h3 className="text-slate-900 font-bold text-sm leading-tight">
+                    {feature.title}
+                  </h3>
+                </div>
+                <ul className="space-y-1.5">
+                  {feature.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-slate-500 text-xs">
+                      <span className="w-1 h-1 rounded-full bg-indigo-400 flex-shrink-0 mt-1.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Technologies Used */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-primary-400">
-            Technologies Used
-          </h2>
-          <div className="space-y-6">
-            {/* Frontend Stack */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-xl font-semibold mb-4 text-secondary-400">Frontend Stack</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">Next.js 14</span>
-                  <p className="text-xs text-gray-400 mt-1">React framework for SSR</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">React 18</span>
-                  <p className="text-xs text-gray-400 mt-1">UI component library</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">TypeScript</span>
-                  <p className="text-xs text-gray-400 mt-1">Type-safe JavaScript</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">CSS3</span>
-                  <p className="text-xs text-gray-400 mt-1">Custom styling</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">WebRTC APIs</span>
-                  <p className="text-xs text-gray-400 mt-1">Media capture</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">Canvas API</span>
-                  <p className="text-xs text-gray-400 mt-1">Image processing</p>
+          <SectionHeading label="Stack" title="Technologies Used" />
+          <div className="space-y-5">
+            {techStacks.map((stack) => (
+              <div key={stack.label} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <h3 className={`text-base font-bold mb-4 ${stackHeadingColors[stack.color]}`}>
+                  {stack.label}
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {stack.items.map((item) => (
+                    <div
+                      key={item.name}
+                      className={`px-3 py-2.5 rounded-xl border text-xs ${stackBadgeColors[stack.color]}`}
+                    >
+                      <span className="font-semibold block">{item.name}</span>
+                      <span className="opacity-70 mt-0.5 block">{item.desc}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            {/* Backend Stack */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-xl font-semibold mb-4 text-secondary-400">Backend Stack</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">FastAPI</span>
-                  <p className="text-xs text-gray-400 mt-1">Modern Python framework</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">Uvicorn</span>
-                  <p className="text-xs text-gray-400 mt-1">ASGI server</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">Python 3.10+</span>
-                  <p className="text-xs text-gray-400 mt-1">Core language</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">Pydantic</span>
-                  <p className="text-xs text-gray-400 mt-1">Data validation</p>
-                </div>
-              </div>
-            </div>
-
-            {/* AI/ML Technologies */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-xl font-semibold mb-4 text-secondary-400">AI/ML Technologies</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">OpenAI GPT-4</span>
-                  <p className="text-xs text-gray-400 mt-1">Question generation & evaluation</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">Whisper API</span>
-                  <p className="text-xs text-gray-400 mt-1">Speech-to-text</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">DeepFace</span>
-                  <p className="text-xs text-gray-400 mt-1">Facial expression analysis</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">MediaPipe</span>
-                  <p className="text-xs text-gray-400 mt-1">Face landmark detection</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">TensorFlow 2.20</span>
-                  <p className="text-xs text-gray-400 mt-1">Deep learning framework</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">OpenCV</span>
-                  <p className="text-xs text-gray-400 mt-1">Computer vision</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Cloud Services */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-xl font-semibold mb-4 text-secondary-400">Cloud Services</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">D-ID API</span>
-                  <p className="text-xs text-gray-400 mt-1">Talking avatar generation</p>
-                </div>
-                <div className="bg-[#121212] px-4 py-2 rounded-lg border border-[#33353F]">
-                  <span className="text-white font-medium">OpenAI API</span>
-                  <p className="text-xs text-gray-400 mt-1">GPT-4 and Whisper endpoints</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* What I Learned */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-primary-400">
-            What I Learned
-          </h2>
-          <div className="space-y-4">
-            {/* Learning 1 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">1.</span>
-                Full-Stack Integration
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Building seamless communication between Next.js frontend and FastAPI backend</li>
-                <li>Implementing WebSocket connections for real-time data streaming</li>
-                <li>Managing CORS policies for local development</li>
-                <li>Handling asynchronous operations across the stack</li>
-              </ul>
-            </div>
-
-            {/* Learning 2 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">2.</span>
-                AI/ML Model Integration
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Working with multiple AI APIs (OpenAI, D-ID) in a single application</li>
-                <li>Understanding DeepFace model initialization and TensorFlow compatibility issues</li>
-                <li>Resolving dependency conflicts (tf-keras requirement for TensorFlow 2.20)</li>
-                <li>Optimizing ML model performance for real-time applications</li>
-                <li>Balancing local processing (emotion detection) vs cloud APIs (LLM, STT, avatar)</li>
-              </ul>
-            </div>
-
-            {/* Learning 3 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">3.</span>
-                Real-time Media Processing
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Capturing and processing webcam frames using Canvas API</li>
-                <li>Implementing efficient base64 encoding for image transmission</li>
-                <li>Managing audio recording with MediaRecorder API</li>
-                <li>Handling browser media permissions and error states</li>
-                <li>Optimizing frame analysis intervals (2-second intervals) for performance</li>
-              </ul>
-            </div>
-
-            {/* Learning 4 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">4.</span>
-                State Management
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Managing complex React component state (idle, loading, speaking, completed)</li>
-                <li>Coordinating multiple asynchronous operations (avatar generation, emotion detection, transcription)</li>
-                <li>Session lifecycle management with unique IDs</li>
-                <li>Progress tracking across multi-step interviews</li>
-              </ul>
-            </div>
-
-            {/* Learning 5 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">5.</span>
-                API Design & Backend Architecture
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Designing RESTful endpoints with FastAPI</li>
-                <li>Implementing proper error handling and validation with Pydantic</li>
-                <li>Structuring code with routers, services, and schemas</li>
-                <li>Creating reusable service classes (FaceAnalyzer, InterviewFlow)</li>
-                <li>Managing API rate limits and timeouts</li>
-              </ul>
-            </div>
-
-            {/* Learning 6 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">6.</span>
-                Problem-Solving
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Debugging TensorFlow/DeepFace compatibility issues</li>
-                <li>Implementing fallback mechanisms when services fail</li>
-                <li>Handling asynchronous D-ID avatar generation (polling for completion)</li>
-                <li>Managing file cleanup for temporary audio files</li>
-                <li>Preserving UI state (keeping avatar visible after playback)</li>
-              </ul>
-            </div>
-
-            {/* Learning 7 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">7.</span>
-                User Experience Design
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Creating smooth transitions between interview states</li>
-                <li>Providing visual feedback (loading indicators, streaming status)</li>
-                <li>Implementing retry logic for failed operations</li>
-                <li>Designing intuitive error messages</li>
-                <li>Balancing feature richness with simplicity</li>
-              </ul>
-            </div>
-
-            {/* Learning 8 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">8.</span>
-                Development Best Practices
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Environment variable management for API keys</li>
-                <li>Writing modular, maintainable code</li>
-                <li>Implementing proper logging for debugging</li>
-                <li>Using TypeScript for type safety</li>
-                <li>Setting up hot-reload for efficient development</li>
-              </ul>
-            </div>
-
-            {/* Learning 9 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">9.</span>
-                Cloud Service Integration
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Understanding D-ID&apos;s asynchronous processing workflow</li>
-                <li>Managing API authentication (Basic auth format quirks)</li>
-                <li>Handling webhook alternatives (polling vs streaming)</li>
-                <li>Cost optimization (when to use cloud vs local processing)</li>
-              </ul>
-            </div>
-
-            {/* Learning 10 */}
-            <div className="bg-[#1a1a1a] rounded-xl p-6 border border-[#33353F]">
-              <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">
-                <span className="text-primary-500">10.</span>
-                Performance Optimization
-              </h3>
-              <ul className="text-gray-300 space-y-1 text-sm ml-6 list-disc">
-                <li>Lazy loading of heavy ML models</li>
-                <li>Implementing analysis intervals to reduce API calls</li>
-                <li>Optimizing image quality/size for transmission</li>
-                <li>Managing memory with proper cleanup on component unmount</li>
-              </ul>
-            </div>
+          <SectionHeading label="Takeaways" title="What I Learned" />
+          <div className="grid md:grid-cols-2 gap-5">
+            {learnings.map((item, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-600 text-xs font-bold flex items-center justify-center flex-shrink-0">
+                    {i + 1}
+                  </span>
+                  <h3 className="text-slate-900 font-bold text-sm">{item.title}</h3>
+                </div>
+                <ul className="space-y-1.5">
+                  {item.items.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-slate-500 text-xs">
+                      <span className="w-1 h-1 rounded-full bg-violet-400 flex-shrink-0 mt-1.5" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Back to Top */}
-        <div className="text-center pt-8 border-t border-[#33353F]">
+        {/* Back Button */}
+        <div className="text-center pt-8 border-t border-slate-200">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-full hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 transition-all duration-200"
           >
-            <ArrowLeftIcon className="h-5 w-5" />
-            <span>Back to Portfolio</span>
+            <ArrowLeftIcon className="h-4 w-4" />
+            Back to Portfolio
           </Link>
         </div>
       </main>
+    </div>
+  );
+}
+
+function SectionHeading({ label, title }) {
+  return (
+    <div className="mb-6">
+      <p className="text-indigo-600 font-semibold text-xs uppercase tracking-widest mb-1">{label}</p>
+      <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">{title}</h2>
     </div>
   );
 }
