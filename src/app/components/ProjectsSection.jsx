@@ -43,12 +43,12 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Full-stack Roadmap",
-    description: "A visual roadmap guide for full-stack development.",
-    image: "/images/projects/6.png",
+    title: "CafeRoute",
+    description: "A food delivery management system for ordering and tracking meals.",
+    image: "/images/projects/cafe_route.jpeg",
     tag: ["All", "Web"],
-    gitUrl: "/",
-    previewUrl: "/",
+    gitUrl: "https://github.com/Alex-Ojukwu/CAFE_ROUTE",
+    previewUrl: "https://cafe-route.vercel.app/login",
   },
   {
     id: 7,
@@ -61,12 +61,12 @@ const projectsData = [
   },
   {
     id: 8,
-    title: "TalentLens AI",
+    title: "Xylo AI",
     description: "AI interview assistant with emotion detection and avatar live video feed.",
-    image: "/images/projects/AI_interview_Assistant.jpeg",
+    image: "/images/projects/new_homepage.jpeg",
     tag: ["All", "AI"],
-    gitUrl: "https://github.com/Alex-Ojukwu/AI-INTERVIEWER.git",
-    previewUrl: "/",
+    gitUrl: "https://github.com/Alex-Ojukwu/AI-INTERVIEWER",
+    previewUrl: "https://ai-interviewer-fawn-nine.vercel.app/",
   },
 ];
 
