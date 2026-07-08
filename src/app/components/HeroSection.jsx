@@ -10,16 +10,34 @@ const HeroSection = () => {
   const videoRef = useRef(null);
 
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    /* React doesn't render the `muted` attribute into server HTML, so mobile
+       Safari sees an unmuted video, blocks autoplay, and shows a play button.
+       Force it on the DOM node before calling play(). */
+    video.muted = true;
+    video.defaultMuted = true;
+
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const apply = () => {
-      const video = videoRef.current;
-      if (!video) return;
       if (mq.matches) video.pause();
       else video.play().catch(() => {});
     };
+    /* Last resort (e.g. iOS Low Power Mode blocks all autoplay): start the
+       video on the first touch anywhere, instead of the native play button. */
+    const resume = () => {
+      if (!mq.matches && video.paused) video.play().catch(() => {});
+    };
+
     apply();
     mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
+    video.addEventListener("loadeddata", apply);
+    window.addEventListener("touchstart", resume, { once: true, passive: true });
+    return () => {
+      mq.removeEventListener("change", apply);
+      video.removeEventListener("loadeddata", apply);
+      window.removeEventListener("touchstart", resume);
+    };
   }, []);
 
   return (
@@ -32,6 +50,7 @@ const HeroSection = () => {
         muted
         loop
         playsInline
+        preload="auto"
         aria-hidden="true"
       />
       {/* Bottom blur overlay — backdrop blur masked to fade out toward mid-screen */}

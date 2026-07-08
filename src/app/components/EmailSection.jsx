@@ -7,24 +7,34 @@ import Image from "next/image";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSending(true);
+    setError("");
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
-    const JSONdata = JSON.stringify(data);
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSONdata,
-    };
-    const response = await fetch("/api/send", options);
-    const resData = await response.json();
-    if (response.status === 200) {
-      setEmailSubmitted(true);
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        setEmailSubmitted(true);
+      } else {
+        const resData = await response.json().catch(() => ({}));
+        setError(resData.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Couldn't reach the server. Please try again.");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -110,11 +120,17 @@ const EmailSection = () => {
                     placeholder="Let&apos;s talk about..."
                   />
                 </div>
+                {error && (
+                  <p role="alert" className="text-red-400 text-sm">
+                    {error}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="bg-white text-black font-medium py-3 px-6 rounded-full hover:bg-gray-200 transition-colors"
+                  disabled={sending}
+                  className="bg-white text-black font-medium py-3 px-6 rounded-full hover:bg-gray-200 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {sending ? "Sending…" : "Send Message"}
                 </button>
               </form>
             )}

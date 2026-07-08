@@ -14,21 +14,23 @@ export async function POST(req) {
       );
     }
 
-    // Debug: Log if environment variables exist (without showing actual values)
-    console.log("Environment variables check:", {
-      hasOutlookUser: !!process.env.OUTLOOK_USER,
-      hasOutlookPassword: !!process.env.OUTLOOK_PASSWORD,
-      hasRecipientEmail: !!process.env.RECIPIENT_EMAIL,
-    });
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+      console.error(
+        "Email not configured: GMAIL_USER / GMAIL_APP_PASSWORD env vars are missing"
+      );
+      return NextResponse.json(
+        { success: false, message: "Email service is not configured." },
+        { status: 500 }
+      );
+    }
 
-    // Create transporter with Outlook SMTP
- const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-});
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
 
     // Email options
     const mailOptions = {
