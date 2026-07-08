@@ -1,86 +1,126 @@
 "use client";
-import React from "react";
-import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { Play, Star, Code2, Calendar } from "lucide-react";
+import GithubIcon from "../../../public/github-icon.svg";
+import LinkedinIcon from "../../../public/linkedin-icon.svg";
 
 const HeroSection = () => {
-  return (
-    <section className="lg:py-20 py-10">
-      <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="col-span-7 place-self-center text-center sm:text-left"
-        >
-          <p className="text-indigo-600 font-semibold text-sm sm:text-base uppercase tracking-widest mb-3">
-            Welcome to my portfolio
-          </p>
-          <h1 className="text-slate-900 mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight">
-            Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-              Alex-Ojukwu
-            </span>
-            <br />
-            <span className="text-slate-500 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-              <TypeAnimation
-                sequence={[
-                  "Web Developer",
-                  1200,
-                  "AI/ML Engineer",
-                  1200,
-                  "Full Stack Dev",
-                  1200,
-                  "Problem Solver",
-                  1200,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              />
-            </span>
-          </h1>
-          <p className="text-slate-500 text-base sm:text-lg mb-8 max-w-lg">
-            The engineer you need to bring your vision to life. Building fast,
-            beautiful, and impactful digital experiences.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center sm:justify-start">
-            <Link
-              href="/#contact"
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-semibold text-sm hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Hire Me
-            </Link>
-            <Link
-              href="/"
-              className="px-8 py-3 rounded-full border-2 border-indigo-200 text-indigo-600 font-semibold text-sm hover:bg-indigo-50 hover:-translate-y-0.5 transition-all duration-200"
-            >
-              Download CV
-            </Link>
-          </div>
-        </motion.div>
+  const videoRef = useRef(null);
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          className="col-span-5 place-self-center mt-4 lg:mt-0"
-        >
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-200 to-violet-200 blur-2xl opacity-60 scale-110" />
-            <div className="relative rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] mx-auto ring-4 ring-white shadow-xl overflow-hidden">
-              <Image
-                src="/images/ME.jpg"
-                alt="Alex-Ojukwu"
-                className="object-cover w-full h-full"
-                width={500}
-                height={500}
-              />
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const apply = () => {
+      const video = videoRef.current;
+      if (!video) return;
+      if (mq.matches) video.pause();
+      else video.play().catch(() => {});
+    };
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  return (
+    <section className="relative min-h-[100dvh] flex flex-col justify-end overflow-hidden bg-black">
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/videos/hero-bg.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
+      {/* Bottom blur overlay — backdrop blur masked to fade out toward mid-screen */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none backdrop-blur-xl"
+        style={{
+          WebkitMaskImage: "linear-gradient(to top, black 0%, transparent 45%)",
+          maskImage: "linear-gradient(to top, black 0%, transparent 45%)",
+        }}
+      />
+
+      <div className="relative z-10 px-4 sm:px-6 md:px-12 pb-8 md:pb-16">
+        <div className="flex flex-col md:flex-row md:items-end gap-8">
+          <div className="flex-1">
+            <div
+              className="flex flex-wrap items-center gap-3 sm:gap-6 mb-6 md:mb-8 text-xs sm:text-sm text-white animate-blur-fade-up"
+              style={{ animationDelay: "300ms" }}
+            >
+              <span className="flex items-center gap-2">
+                <Star size={16} className="fill-white sm:w-5 sm:h-5" />
+                <span className="font-medium">7+ Projects Shipped</span>
+              </span>
+              <span className="flex items-center gap-2">
+                <Code2 size={16} className="sm:w-5 sm:h-5" />
+                <span>Full-Stack · AI/ML</span>
+              </span>
+              <span className="flex items-center gap-2">
+                <Calendar size={16} className="sm:w-5 sm:h-5" />
+                <span>Open to Opportunities</span>
+              </span>
+            </div>
+
+            <h1
+              className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-[-0.04em] mb-4 md:mb-6 [text-wrap:balance] animate-blur-fade-up"
+              style={{ animationDelay: "400ms" }}
+            >
+              Alex-Ojukwu Nduka.
+            </h1>
+
+            <p
+              className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-12 max-w-2xl animate-blur-fade-up"
+              style={{ animationDelay: "500ms" }}
+            >
+              Full-stack developer crafting fast, beautiful digital
+              experiences, from responsive web apps to AI-powered products.
+            </p>
+
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <Link
+                href="/#projects"
+                className="flex items-center gap-2 bg-white text-black rounded-full font-medium px-6 sm:px-8 py-2.5 sm:py-3 hover:bg-gray-200 transition-colors animate-blur-fade-up"
+                style={{ animationDelay: "600ms" }}
+              >
+                <Play size={18} className="fill-black" />
+                <span>View Projects</span>
+              </Link>
+              <Link
+                href="/#contact"
+                className="liquid-glass rounded-full font-medium text-white px-6 sm:px-8 py-2.5 sm:py-3 hover:bg-white/10 transition-colors animate-blur-fade-up"
+                style={{ animationDelay: "700ms" }}
+              >
+                Contact Me
+              </Link>
             </div>
           </div>
-        </motion.div>
+
+          <div className="flex gap-3 sm:gap-4 md:justify-end">
+            <a
+              href="https://github.com/Alex-Ojukwu"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 liquid-glass rounded-full px-4 sm:px-6 py-2.5 sm:py-3 text-sm text-white hover:bg-white/10 transition-colors animate-blur-fade-up"
+              style={{ animationDelay: "800ms" }}
+            >
+              <Image src={GithubIcon} alt="" width={18} height={18} />
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alex-ojukwu-a17852365/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 liquid-glass rounded-full px-4 sm:px-6 py-2.5 sm:py-3 text-sm text-white hover:bg-white/10 transition-colors animate-blur-fade-up"
+              style={{ animationDelay: "900ms" }}
+            >
+              <Image src={LinkedinIcon} alt="" width={18} height={18} />
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

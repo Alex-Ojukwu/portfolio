@@ -87,10 +87,7 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-16 sm:py-20">
       <div className="text-center mb-10">
-        <p className="text-indigo-600 font-semibold text-sm uppercase tracking-widest mb-2">
-          What I&apos;ve built
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
           My Projects
         </h2>
       </div>
