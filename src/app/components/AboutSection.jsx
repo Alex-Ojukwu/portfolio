@@ -127,8 +127,8 @@ const TAB_DATA = [
     content: (
       <ul className="space-y-2 mt-2">
         {[
-          "WASSCE — 2022",
-          "IGCSE (Cambridge / Pearson Edexcel) — 2022",
+          "WASSCE - 2022",
+          "IGCSE (Cambridge) - 2022",
           "AWS Cloud Practitioner",
           "Google Professional Cloud Developer",
         ].map((c) => (
